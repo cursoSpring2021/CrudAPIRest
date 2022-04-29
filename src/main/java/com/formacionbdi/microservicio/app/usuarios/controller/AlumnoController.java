@@ -26,7 +26,7 @@ public class AlumnoController {
     public ResponseEntity<?> ver(@PathVariable long id) {
         Optional<Alumno> o = alumnoService.findById(id);
         if (o.empty().isPresent()) {
-            ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(o.get());
     }
@@ -41,7 +41,7 @@ public class AlumnoController {
     public ResponseEntity<?> editar(@RequestBody Alumno alumno, @PathVariable Long id){
         Optional<Alumno> o = alumnoService.findById(id);
         if (o.empty().isPresent()){
-            ResponseEntity.notFound().build();
+            return  ResponseEntity.notFound().build();
         }
         Alumno alumnodb = o.get();
         alumnodb.setNombre(alumno.getNombre());
